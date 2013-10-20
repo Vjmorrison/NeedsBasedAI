@@ -7,8 +7,6 @@ public class WorldManager : MonoBehaviour {
 
     public CurrentViewMgr m_currentViewInstance;
 
-    private static WorldManager m_instance;
-
 	// Use this for initialization
 	void Start () {
         
@@ -20,35 +18,39 @@ public class WorldManager : MonoBehaviour {
         
 	}
 
-    public void TickWorlds(float deltatime)
+    public void TickWorlds(float deltaTime)
     {
         foreach (WorldChunk chunk in m_allChunks)
         {
             if (chunk == m_currentViewInstance.m_currentChunk)
             {
-                chunk.UpdateChunk(Time.deltaTime, AI_LOD.HIGH);
+                chunk.UpdateChunk(deltaTime, AI_LOD.HIGH);
             }
             else
             {
-                chunk.UpdateChunk(Time.deltaTime, AI_LOD.MEDIUM);
+                chunk.UpdateChunk(deltaTime, AI_LOD.MEDIUM);
             }
         }
     }
 
-    public static bool AddChunk(WorldChunk newChunk)
+    public bool AddChunk(WorldChunk newChunk)
     {
-        if (m_instance.m_allChunks.Contains(newChunk))
+        if (m_allChunks.Contains(newChunk))
         {
             return false;
         }
 
-        m_instance.m_allChunks.Add(newChunk);
+        m_allChunks.Add(newChunk);
         return true;
     }
 
     void Awake()
     {
-        m_instance = this;
         m_allChunks = new List<WorldChunk>(9);
+
+        WorldChunk newChunk = new WorldChunk();
+        AddChunk(newChunk);
+
+        m_currentViewInstance.m_currentChunk = newChunk;
     }
 }

@@ -204,7 +204,7 @@ public class NewGameInterface : MonoBehaviour {
         WorldChunk newChunk = new WorldChunk();
         newChunk.AddActor(newActor);
 
-        WorldManager.AddChunk(newChunk);
+        GameManager.Get().m_worldMgr.AddChunk(newChunk);
 
         Application.LoadLevel(2);
     }

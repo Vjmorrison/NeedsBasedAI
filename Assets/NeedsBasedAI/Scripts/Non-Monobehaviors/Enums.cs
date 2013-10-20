@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.ComponentModel;
+using System;
 
 public enum AI_LOD
 {
@@ -14,4 +15,20 @@ public enum AI_LOD
     LOW = 3,
     [Description("High Level Of Detail")]
     MIN = 4
+}
+
+public static class Enums
+{
+    public static T ParseEnum<T>(string enumString)
+    {
+        try
+        {
+            T enumValue = (T)Enum.Parse(typeof(T), enumString);
+            return enumValue;
+        }
+        catch
+        {
+            return default(T);
+        }
+    }
 }

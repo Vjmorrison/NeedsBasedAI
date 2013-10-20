@@ -32,6 +32,9 @@ public class PeopleGenerator {
         defaultHuman.InitDefaultNeeds();
         defaultHuman.InitDefaultUtilities();
 
+        defaultHuman.m_firstName = DataWarehouse.Get().GetRandomValue(DataWarehouse.DataType.HUMAN_FIRSTNAMES);
+        defaultHuman.m_familyName = DataWarehouse.Get().GetRandomValue(DataWarehouse.DataType.HUMAN_LASTNAMES);
+
         return defaultHuman;
     }
 
@@ -53,7 +56,7 @@ public class PeopleGenerator {
     /// <returns></returns>
     public Actor BreedHuman(Actor parent1, Actor parent2)
     {
-        return BreedHuman(GetDefaultHuman(), GetDefaultHuman(), 0.0f);
+        return BreedHuman(parent1, parent2, 0.0f);
     }
 
     /// <summary>
@@ -66,6 +69,11 @@ public class PeopleGenerator {
     public Actor BreedHuman(Actor parent1, Actor parent2, float mutationRate)
     {
         Actor newActor = GetDefaultHuman();
+
+        newActor.m_firstName = DataWarehouse.Get().GetRandomValue(DataWarehouse.DataType.HUMAN_FIRSTNAMES);
+        newActor.m_familyName = parent1.m_familyName;
+        newActor.parent1 = parent1;
+        newActor.parent2 = parent2;
 
         //get parent1 alleles
         foreach (string key in parent1.m_actorStats.Keys)
@@ -93,8 +101,6 @@ public class PeopleGenerator {
                     stat.m_statBonuses[i] += (int)Math.Round(UnityEngine.Random.Range(-mutationRate, mutationRate), 1);
                 }
             }
-
-
         }
 
         return newActor;

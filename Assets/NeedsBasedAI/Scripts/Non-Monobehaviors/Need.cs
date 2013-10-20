@@ -56,9 +56,7 @@ public class Need  {
     /// <summary>
     /// the public description of the need.
     /// </summary>
-    public string m_description;
-
-    
+    public string m_description;    
 
     /// <summary>
     /// Basic constructor.  Defines the name and description of the need.
@@ -84,9 +82,9 @@ public class Need  {
     /// <param name="deltaTime"></param>
     public void Decay(float deltaTime)
     {
-        Debug.Log(string.Format("Decaying need {0} by {1}",m_name, m_decayPerUnit * deltaTime));
+        //Debug.Log(string.Format("Decaying need {0} by {1}",m_name, m_decayPerUnit * deltaTime));
         CurrentValue -= m_decayPerUnit * deltaTime;
-        Debug.Log(string.Format("Actual need Value for {0} is {1}", m_name, CurrentValue));
+        //Debug.Log(string.Format("Actual need Value for {0} is {1}", m_name, CurrentValue));
     }
 
     public void AddValue(float value)

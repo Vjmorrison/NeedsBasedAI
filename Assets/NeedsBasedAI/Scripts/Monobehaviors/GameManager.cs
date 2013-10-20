@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour {
     public float m_debugTick;
     public string m_debugTickString;
 
+    public TextAsset[] m_allDataFiles;
+
 	// Use this for initialization
 	void Start () {
         m_instance = this;
@@ -25,7 +27,7 @@ public class GameManager : MonoBehaviour {
         DontDestroyOnLoad(gameObject);
         //DEBUG
         //LOAD Add New Character Menu
-        Application.LoadLevel(1);
+        Application.LoadLevel(2);
         //Loads Main Menu
         //Loads Game
         m_debugTick = 0;

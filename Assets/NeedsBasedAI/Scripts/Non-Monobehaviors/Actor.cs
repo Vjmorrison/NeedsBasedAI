@@ -20,6 +20,12 @@ public class Actor : InteractiveObject {
 
     public List<Trait> m_actorTraits;
 
+    public Actor parent1;
+    public Actor parent2;
+
+    public string m_firstName;
+    public string m_familyName;
+
     public Actor()
     {
         InitDefaultStats();
