@@ -1,0 +1,4 @@
+Slob	"This is a default description, totally not good"	CHA|-2
+Tidy	"This is a default description, totally not good"	CHA|+2
+Huntsman	"This is a default description, totally not good"	PER|+2;STR|+1
+Timid	"This is a default description, totally not good"	STR|-1;VIT|-1
