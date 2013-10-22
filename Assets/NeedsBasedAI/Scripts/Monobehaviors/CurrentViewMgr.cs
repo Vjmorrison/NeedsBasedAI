@@ -94,7 +94,7 @@ public class CurrentViewMgr : MonoBehaviour {
             }
 
             GUI.Label(labelPOS, human.m_firstName + " " + human.m_familyName + " [" + StatString + "]");
-            if (GUI.Button(new Rect(labelPOS.x + 375, labelPOS.y, 120, labelPOS.height), "View Family Tree"))
+            if (GUI.Button(new Rect(labelPOS.x + 425, labelPOS.y, 120, labelPOS.height), "View Family Tree"))
             {
                 Debug.Log(string.Format("Generation-{0}: {1} {2}", 0, human.m_firstName, human.m_familyName));
                 LogParents(human, 1);

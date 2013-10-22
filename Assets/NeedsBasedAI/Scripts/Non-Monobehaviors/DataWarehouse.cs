@@ -30,14 +30,16 @@ public class DataWarehouse {
 
     public void Init()
     {
+		Debug.Log("INITIALIZING the Autogen!");
         m_autogenData = new Dictionary<DataType, string[]>();
 
         TextAsset[] datafiles = GameManager.Get().m_allDataFiles;
 
         foreach (TextAsset data in datafiles)
         {
-            string[] dataText = data.text.Split(new string[] {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries);
-
+			Debug.Log("INITIALIZING "+data.name.ToUpper());
+            string[] dataText = data.text.Split(new string[] {"\n"}, StringSplitOptions.RemoveEmptyEntries);
+			Debug.Log("Length of "+dataText.Length.ToString());
             m_autogenData.Add(Enums.ParseEnum<DataType>(data.name.ToUpper()), dataText);
         }
     }
